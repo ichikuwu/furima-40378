@@ -56,12 +56,13 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_many   :order
+- has_one   :order
 
 ## orders
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
+| order_id            | integer| null: false |
 | user               | references | null: false, foreign_key:true |
 | item               | references | null: false, foreign_key:true |
 
@@ -81,6 +82,4 @@ Things you may want to cover:
 | item               | references | null: false, foreign_key:true |
 
 ### Association
-
-- has_one    :user
-- has_one    :item
+- belongs_to :order
