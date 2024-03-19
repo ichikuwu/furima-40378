@@ -21,6 +21,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
+
 * ...
 # テーブル設計
 
@@ -47,7 +48,6 @@ Things you may want to cover:
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| item_image         | text   | null: false |
 | item_name          | string | null: false |
 | item_memo          | text   | null: false |
 | category           | string | null: false |
@@ -69,11 +69,10 @@ Things you may want to cover:
 | ------------------ | ------ | ----------- |
 | user               | references | null: false, foreign_key:true |
 | item               | references | null: false, foreign_key:true |
-| ship               | references | null: false, foreign_key:true |
 
 ### Association
 
-- belongs_to :user
+- has_many :user
 - has_one    :item
 - has_one    :ship
 
@@ -81,12 +80,10 @@ Things you may want to cover:
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| postal_code        | string | null: false |
-| prefecture         | string | null: false |
-| city               | string | null: false |
-| street             | string | null: false |
-| Building_name      | string | null: false |
+| ship_id            | integer| null: false |
 | user               | references | null: false, foreign_key:true |
+| item               | references | null: false, foreign_key:true |
+| order               | references | null: false, foreign_key:true |
 
 ### Association
 
