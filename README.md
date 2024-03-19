@@ -42,7 +42,6 @@ Things you may want to cover:
 
 - has_many :items
 - has_many :orders
-- has_one  :ship
 
 ## items テーブル
 
@@ -50,18 +49,14 @@ Things you may want to cover:
 | ------------------ | ------ | ----------- |
 | item_name          | string | null: false |
 | item_memo          | text   | null: false |
-| category           | string | null: false |
-| item_condition     | text   | null: false |
-| ship_user          | text   | null: false |
-| ship_region        | text   | null: false |
-| ship_days          | text   | null: false |
-| item_price         | numeric| null: false |
+| item_id            | integer| null: false |
+| item_price         | integer| null: false |
 | user               | references | null: false, foreign_key:true |
 
 ### Association
 
 - belongs_to :user
-- has_one    :order
+- has_many   :order
 
 ## orders
 
@@ -72,18 +67,18 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :user
-- has_one    :item
+- belongs_to :user
+- belongs_to :item
 - has_one    :ship
 
 ## ships
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
+| card_id            | integer| null: false |
 | ship_id            | integer| null: false |
 | user               | references | null: false, foreign_key:true |
 | item               | references | null: false, foreign_key:true |
-| order               | references | null: false, foreign_key:true |
 
 ### Association
 
