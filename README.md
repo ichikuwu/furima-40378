@@ -41,6 +41,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :orders
+- has_many :items
 
 ## items テーブル
 
@@ -52,12 +53,14 @@ Things you may want to cover:
 | item_condition_id  | integer| null: false |
 | ship_type_id       | integer| null: false |
 | region_id          | integer| null: false |
-| ship_days_id       | integer| null: false |
+| ship_day_id        | integer| null: false |
 | item_price         | integer| null: false |
+| user               | references | null: false, foreign_key:true |
 
 ### Association
 
-- has_one   :order
+- has_one     :order
+- belongs_to  :user
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_condition
 - belongs_to_active_hash :ship_type
