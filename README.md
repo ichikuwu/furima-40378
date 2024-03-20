@@ -89,7 +89,7 @@ Things you may want to cover:
 | city               | string | null: false |
 | street             | string | null: false |
 | Building_name      | string | null: false |
-| tel                | integer| null: false |
+| tel                | string| null: false |
 | order              | references | null: false, foreign_key:true |
 
 
