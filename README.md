@@ -49,7 +49,6 @@ Things you may want to cover:
 | ------------------ | ------ | ----------- |
 | item_name          | string | null: false |
 | item_memo          | text   | null: false |
-| item_id            | integer| null: false |
 | item_price         | integer| null: false |
 | user               | references | null: false, foreign_key:true |
 
@@ -57,14 +56,19 @@ Things you may want to cover:
 
 - belongs_to :user
 - has_one   :order
+- belongs_to_active_hash :category
+- belongs_to_active_hash :item_condition
+- belongs_to_active_hash :ship_type
+- belongs_to_active_hash :ship_region
+- belongs_to_active_hash :ship_days
 
 ## orders
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| order_id            | integer| null: false |
 | user               | references | null: false, foreign_key:true |
 | item               | references | null: false, foreign_key:true |
+| ship               | references | null: false, foreign_key:true |
 
 ### Association
 
@@ -76,10 +80,13 @@ Things you may want to cover:
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| card_id            | integer| null: false |
-| ship_id            | integer| null: false |
+| postal_code        | string | null: false |
+| city               | string | null: false |
+| street             | string | null: false |
+| Building_name      | string | null: false |
 | user               | references | null: false, foreign_key:true |
 | item               | references | null: false, foreign_key:true |
 
 ### Association
 - belongs_to :order
+- belongs_to_active_hash :prefecture
