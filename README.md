@@ -40,7 +40,6 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :items
 - has_many :orders
 
 ## items テーブル
@@ -49,17 +48,20 @@ Things you may want to cover:
 | ------------------ | ------ | ----------- |
 | item_name          | string | null: false |
 | item_memo          | text   | null: false |
+| category_id        | integer| null: false |
+| item_condition_id  | integer| null: false |
+| ship_type_id       | integer| null: false |
+| region_id          | integer| null: false |
+| ship_days_id       | integer| null: false |
 | item_price         | integer| null: false |
-| user               | references | null: false, foreign_key:true |
 
 ### Association
 
-- belongs_to :user
 - has_one   :order
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_condition
 - belongs_to_active_hash :ship_type
-- belongs_to_active_hash :ship_region
+- belongs_to_active_hash :region
 - belongs_to_active_hash :ship_days
 
 ## orders
@@ -68,7 +70,6 @@ Things you may want to cover:
 | ------------------ | ------ | ----------- |
 | user               | references | null: false, foreign_key:true |
 | item               | references | null: false, foreign_key:true |
-| ship               | references | null: false, foreign_key:true |
 
 ### Association
 
@@ -81,12 +82,15 @@ Things you may want to cover:
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | postal_code        | string | null: false |
+| region_id          | integer| null: false |
 | city               | string | null: false |
 | street             | string | null: false |
 | Building_name      | string | null: false |
-| user               | references | null: false, foreign_key:true |
-| item               | references | null: false, foreign_key:true |
+| tel                | integer| null: false |
+| order              | references | null: false, foreign_key:true |
+
 
 ### Association
+
 - belongs_to :order
-- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :region
