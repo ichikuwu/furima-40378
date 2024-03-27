@@ -28,27 +28,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item memo can't be blank")
       end
       it "categoryが---では登録できない" do
-        @item.category = Category.find(1)
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it "item_conditionが---では登録できない" do
-        @item.item_condition = ItemCondition.find(1)
+        @item.item_condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Item condition can't be blank")
       end
       it "ship_typeが---では登録できない" do
-        @item.ship_type = ShipType.find(1)
+        @item.ship_type_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Ship type can't be blank")
       end
       it "regionが---では登録できない" do
-        @item.region = Region.find(1)
+        @item.region_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Region can't be blank")
       end
       it "ship_dayが---では登録できない" do
-        @item.ship_day = ShipDay.find(1)
+        @item.ship_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Ship day can't be blank")
       end
@@ -63,7 +63,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Item price is invalid")
       end
-
       it "item_priceは¥10,000,000以上だと登録できない" do
         @item.item_price =  10000000
         @item.valid?
@@ -74,6 +73,20 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Item price is invalid")
       end
-   end
+      it "userが紐付いていないと保存できない" do
+          @item.user = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include('User must exist')
+      end
+    end
   end
 end
+
+
+=begin
+        it 'userが紐付いていないと保存できない' do
+          @item.user = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include('User must exist')
+      end
+=end 
